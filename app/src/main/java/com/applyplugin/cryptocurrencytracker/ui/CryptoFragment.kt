@@ -20,6 +20,7 @@ class CryptoFragment : Fragment() {
 
     private val mAdapter: CryptoAdapter by lazy { CryptoAdapter() }
     private val mainViewModel: MainViewModel by viewModels()
+    private val cryptoViewModel: CryptoViewModel by viewModels()
     private lateinit var binding: FragmentCryptoBinding
 
     override fun onCreateView(
@@ -28,7 +29,6 @@ class CryptoFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentCryptoBinding.inflate(inflater, container, false)
-        //binding.mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
 
         setUpRecyclerView()
         requestApiData()
@@ -37,7 +37,7 @@ class CryptoFragment : Fragment() {
     }
 
     private fun requestApiData() {
-        mainViewModel.getCrypto(applyQuery())
+        mainViewModel.getCrypto(cryptoViewModel.applyQuery())
         mainViewModel.cryptoResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is NetworkResult.Success -> {
@@ -59,9 +59,6 @@ class CryptoFragment : Fragment() {
         }
     }
 
-    private fun applyQuery(): String {
-        return ""
-    }
 
     private fun setUpRecyclerView() {
         binding.recyclerview.adapter = mAdapter

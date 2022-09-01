@@ -18,6 +18,7 @@ import dagger.hilt.android.internal.Contexts.getApplication
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import retrofit2.http.Query
 import java.lang.Exception
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -30,16 +31,16 @@ class MainViewModel @Inject constructor(
 
     var cryptoResponse: MutableLiveData<NetworkResult<List<CryptoResponse>>> = MutableLiveData()
 
-    fun getCrypto(ids: String) = viewModelScope.launch {
-        getCryptoSafeCall(ids)
+    fun getCrypto(query: HashMap<String, String>) = viewModelScope.launch {
+        getCryptoSafeCall(query)
     }
 
-    private suspend fun getCryptoSafeCall(ids: String) {
+    private suspend fun getCryptoSafeCall(query: HashMap<String, String>) {
         cryptoResponse.value = NetworkResult.Loading()
         if (hasInternetConnection()) {
             try {
-                //val response = repository.remoteSource.getCrypto(ids, null, null, null)
-                val response = repository.remoteSource.getAllCrypto()
+                val response = repository.remoteSource.getCrypto(query)
+                //val response = repository.remoteSource.getAllCrypto()
                 cryptoResponse.value = handleCryptoResponse(response)
             } catch (e: Exception) {
                 cryptoResponse.value = NetworkResult.Error("Crypto Not Found")

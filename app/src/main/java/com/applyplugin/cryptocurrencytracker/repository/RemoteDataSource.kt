@@ -10,25 +10,17 @@ import javax.inject.Inject
 
 class RemoteDataSource @Inject constructor(private val cryptoApiInterface: CryptoAPIInterface) {
 
-    suspend fun getCrypto(
-        id: String?,
-        page: Int?,
-        currency: Constants.Currency?,
-        status: Constants.Status?
-    ): Response<List<CryptoResponse>> {
-        return cryptoApiInterface.getCryptos(
-            API_KEY,
-            id,
-            PER_PAGE,
-        )
-    }
-
-    suspend fun getAllCrypto(): Response<List<CryptoResponse>> {
+    suspend fun getCrypto(): Response<List<CryptoResponse>> {
         return cryptoApiInterface.getAllCrypto(
             API_KEY,
             PER_PAGE,
             "1"
         )
+    }
+
+    suspend fun getCrypto(query: HashMap<String, String>) : Response<List<CryptoResponse>>{
+        return cryptoApiInterface.getCryptos(query)
+
     }
 
 }

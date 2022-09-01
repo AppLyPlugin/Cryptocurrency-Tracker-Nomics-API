@@ -6,18 +6,14 @@ import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
+import retrofit2.http.QueryMap
 
 interface CryptoAPIInterface {
 
     //Search All Crypto with Pagination
     @GET("v1/currencies/ticker")
     suspend fun getCryptos(
-        @Query("key") key: String,
-        @Query("ids") id: String?,
-        @Query("per-page") per_page: String,
-        //@Query("page") page: String?,
-        //@Query("status") status: Constants.Status?,
-        //@Query("quote-currency") currency: Constants.Currency?
+        @QueryMap cryptoQuery: HashMap<String, String>
     ): Response<List<CryptoResponse>>
 
     @GET("v1/currencies/ticker")
