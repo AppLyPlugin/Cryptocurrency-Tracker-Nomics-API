@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Cryptocurrency Tracker</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="crypto_frag_holder">Cryptocurrency Fragment</string>
+    <string name="watch_frag_holder">Watcher Fragment</string>
+    <string name="crpto_frag">Cryptocurrency</string>
+    <string name="watch_frag">Watcher</string>
+
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/cryptoFragment">
+
+    <fragment
+        android:id="@+id/cryptoFragment"
+        android:name="com.applyplugin.cryptocurrencytracker.ui.CryptoFragment"
+        android:label="@string/crpto_frag"
+        tools:layout="@layout/fragment_crypto" />
+    <fragment
+        android:id="@+id/watchFragment"
+        android:name="com.applyplugin.cryptocurrencytracker.ui.WatcherFragment"
+        android:label="@string/watch_frag"
+        tools:layout="@layout/watcher_favorites" />
+</navigation>
