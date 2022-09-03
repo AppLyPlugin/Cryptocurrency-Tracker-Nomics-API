@@ -1,7 +1,6 @@
-package com.applyplugin.cryptocurrencytracker.repository.remotedatasource
+package com.applyplugin.cryptocurrencytracker.repository
 
 import com.applyplugin.cryptocurrencytracker.model.CryptoResponse
-import com.applyplugin.cryptocurrencytracker.util.Constants
 import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.API_KEY
 import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.PER_PAGE
 import com.applypluginapp.cryptocurrency.api.CryptoAPIInterface

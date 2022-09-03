@@ -19,7 +19,7 @@ class CryptoViewModel(application: Application) : AndroidViewModel(application) 
         val queries : HashMap<String, String> = HashMap()
 
         queries[QUERY_KEY] = API_KEY
-        queries[QUERY_IDS] = ""
+        queries[QUERY_IDS] = "BTC"
         queries[QUERY_CURRENCY] = ""
         queries[QUERY_INTERVAL] = ""
         queries[QUERY_STATUS] = ""

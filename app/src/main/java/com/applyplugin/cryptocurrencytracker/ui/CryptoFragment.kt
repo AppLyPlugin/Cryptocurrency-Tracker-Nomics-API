@@ -1,6 +1,7 @@
 package com.applyplugin.cryptocurrencytracker.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,12 +32,25 @@ class CryptoFragment : Fragment() {
         binding = FragmentCryptoBinding.inflate(inflater, container, false)
 
         setUpRecyclerView()
-        requestApiData()
+        readDatabase()
 
         return binding.root
     }
 
+    private fun readDatabase() {
+        mainViewModel.readCryptos.observe(viewLifecycleOwner) { database ->
+            if (database.isNotEmpty()) {
+                Log.d("CryptoFragment", "readDatabase called!")
+                mAdapter.setData(database[0].crypto)
+                hideShimmerEffect()
+            } else {
+                requestApiData()
+            }
+        }
+    }
+
     private fun requestApiData() {
+        Log.d("CryptoFragment", "requestApiData called!")
         mainViewModel.getCrypto(cryptoViewModel.applyQuery())
         mainViewModel.cryptoResponse.observe(viewLifecycleOwner) { response ->
             when (response) {

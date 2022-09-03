@@ -4,13 +4,13 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.applyplugin.cryptocurrencytracker.model.CryptoResponse
-import com.applyplugin.cryptocurrencytracker.repository.remotedatasource.Repository
+import com.applyplugin.cryptocurrencytracker.repository.Repository
+import com.applyplugin.cryptocurrencytracker.repository.database.CryptoEntity
 import com.applyplugin.cryptocurrencytracker.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.lang.Exception
@@ -21,6 +21,18 @@ class MainViewModel @Inject constructor(
     private val repository: Repository,
     application: Application
 ) : AndroidViewModel(application) {
+
+
+    /************ ROOM DATABASE ************/
+
+    val readCryptos: LiveData<List<CryptoEntity>> = repository.localSource.readDatabase().asLiveData()
+
+    private fun insertCryptos(cryptoEntity: CryptoEntity) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.localSource.insertCryptos(cryptoEntity)
+        }
+
+    /************ RETROFIT ************/
 
     var cryptoResponse: MutableLiveData<NetworkResult<List<CryptoResponse>>> = MutableLiveData()
 
@@ -33,8 +45,13 @@ class MainViewModel @Inject constructor(
         if (hasInternetConnection()) {
             try {
                 val response = repository.remoteSource.getCrypto(query)
-                //val response = repository.remoteSource.getAllCrypto()
                 cryptoResponse.value = handleCryptoResponse(response)
+
+                val cryptos = cryptoResponse.value!!.data
+                if(cryptos != null){
+                    offlineCacheCryptos(cryptos)
+                }
+
             } catch (e: Exception) {
                 cryptoResponse.value = NetworkResult.Error("Crypto Not Found")
                 e.stackTrace
@@ -42,6 +59,13 @@ class MainViewModel @Inject constructor(
         } else {
             cryptoResponse.value = NetworkResult.Error("No Internet Connection")
         }
+
+    }
+
+    private fun offlineCacheCryptos(cryptos: List<CryptoResponse>) {
+
+        val cryptoEntity = CryptoEntity(cryptos)
+        insertCryptos(cryptoEntity)
 
     }
 
