@@ -1,4 +1,4 @@
-package com.applyplugin.cryptocurrencytracker.repository
+package com.applyplugin.cryptocurrencytracker.repository.remotedatasource
 
 import com.applyplugin.cryptocurrencytracker.model.CryptoResponse
 import com.applyplugin.cryptocurrencytracker.util.Constants

@@ -4,24 +4,17 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.content.getSystemService
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.applyplugin.cryptocurrencytracker.model.CryptoResponse
-import com.applyplugin.cryptocurrencytracker.repository.Repository
+import com.applyplugin.cryptocurrencytracker.repository.remotedatasource.Repository
 import com.applyplugin.cryptocurrencytracker.util.NetworkResult
-import dagger.Provides
-import dagger.hilt.android.internal.Contexts.getApplication
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
-import retrofit2.http.Query
 import java.lang.Exception
 import javax.inject.Inject
-import javax.inject.Singleton
 
 @HiltViewModel
 class MainViewModel @Inject constructor(

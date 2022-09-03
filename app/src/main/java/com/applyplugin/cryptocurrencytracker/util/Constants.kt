@@ -17,6 +17,9 @@ class Constants {
         const val QUERY_PER_PAGE = "per-page"
         const val QUERY_PAGE = "page"
 
+        //ROOM Database
+        const val DATABASE_NAME = "crypto_database"
+        const val CRYPTO_TABLE = "crypto_table"
 
     }
 
