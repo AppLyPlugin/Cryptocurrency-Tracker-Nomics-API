@@ -3,6 +3,7 @@ package com.applyplugin.cryptocurrencytracker.di
 import android.content.Context
 import androidx.room.Room
 import com.applyplugin.cryptocurrencytracker.repository.database.CryptoDatabase
+import com.applyplugin.cryptocurrencytracker.repository.database.CryptoTypeConverter
 import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.DATABASE_NAME
 import dagger.Module
 import dagger.Provides
@@ -24,11 +25,12 @@ object DatabaseModule {
         context,
         CryptoDatabase::class.java,
         DATABASE_NAME
-    ).build()
+    ).addTypeConverter(CryptoTypeConverter())
+        .build()
+
 
     @Singleton
     @Provides
-    fun ProvideDao(database: CryptoDatabase) = database.cryptodao()
-
+    fun provideDao(database: CryptoDatabase) = database.cryptoDao()
 
 }

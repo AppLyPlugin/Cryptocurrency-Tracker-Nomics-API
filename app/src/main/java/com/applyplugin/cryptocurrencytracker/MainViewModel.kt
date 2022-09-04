@@ -10,8 +10,7 @@ import com.applyplugin.cryptocurrencytracker.repository.Repository
 import com.applyplugin.cryptocurrencytracker.repository.database.CryptoEntity
 import com.applyplugin.cryptocurrencytracker.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import retrofit2.Response
 import java.lang.Exception
 import javax.inject.Inject
@@ -25,7 +24,8 @@ class MainViewModel @Inject constructor(
 
     /************ ROOM DATABASE ************/
 
-    val readCryptos: LiveData<List<CryptoEntity>> = repository.localSource.readDatabase().asLiveData()
+    val readCryptos: LiveData<List<CryptoEntity>> =
+        repository.localSource.readDatabase().asLiveData()
 
     private fun insertCryptos(cryptoEntity: CryptoEntity) =
         viewModelScope.launch(Dispatchers.IO) {
@@ -48,7 +48,7 @@ class MainViewModel @Inject constructor(
                 cryptoResponse.value = handleCryptoResponse(response)
 
                 val cryptos = cryptoResponse.value!!.data
-                if(cryptos != null){
+                if (cryptos != null) {
                     offlineCacheCryptos(cryptos)
                 }
 
@@ -110,6 +110,15 @@ class MainViewModel @Inject constructor(
 
         return true
 
+    }
+
+    private fun UpdateCrypto(timeInterval: Long): Job {
+        return CoroutineScope(Dispatchers.Default).launch {
+            while (NonCancellable.isActive) {
+
+                delay(timeInterval)
+            }
+        }
     }
 
 }

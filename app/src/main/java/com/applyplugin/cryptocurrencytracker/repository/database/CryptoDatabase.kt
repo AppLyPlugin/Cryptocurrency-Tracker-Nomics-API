@@ -1,9 +1,11 @@
 package com.applyplugin.cryptocurrencytracker.repository.database
 
+import android.content.Context
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverter
 import androidx.room.TypeConverters
-
+import com.applyplugin.cryptocurrencytracker.di.DatabaseModule.provideDatabase
 
 @Database(
     entities = [CryptoEntity::class],
@@ -13,6 +15,17 @@ import androidx.room.TypeConverters
 @TypeConverters(CryptoTypeConverter::class)
 abstract class CryptoDatabase: RoomDatabase() {
 
-    abstract fun cryptodao(): CryptoDao
+    abstract fun cryptoDao(): CryptoDao
+
+    companion object{
+        @Volatile
+        private var instance: CryptoDatabase? = null
+        private val LOCK = Any()
+
+        operator fun invoke(context: Context) = instance ?: synchronized(LOCK){
+            instance ?: provideDatabase(context).also{ instance = it}
+        }
+
+    }
 
 }

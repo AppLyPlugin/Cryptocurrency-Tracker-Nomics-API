@@ -9,12 +9,14 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.applyplugin.cryptocurrencytracker.MainViewModel
 import com.applyplugin.cryptocurrencytracker.adapter.CryptoAdapter
 import com.applyplugin.cryptocurrencytracker.databinding.FragmentCryptoBinding
 import com.applyplugin.cryptocurrencytracker.util.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class CryptoFragment : Fragment() {
@@ -32,24 +34,27 @@ class CryptoFragment : Fragment() {
         binding = FragmentCryptoBinding.inflate(inflater, container, false)
 
         setUpRecyclerView()
-        readDatabase()
+        requestApiData()
 
         return binding.root
     }
 
-    private fun readDatabase() {
-        mainViewModel.readCryptos.observe(viewLifecycleOwner) { database ->
-            if (database.isNotEmpty()) {
-                Log.d("CryptoFragment", "readDatabase called!")
-                mAdapter.setData(database[0].crypto)
-                hideShimmerEffect()
-            } else {
-                requestApiData()
-            }
-        }
-    }
+    /************ FOR FUTURE USE ***********/
+//    private fun readDatabase() {
+//        lifecycleScope.launch {
+//            mainViewModel.readCryptos.observe(viewLifecycleOwner) { database ->
+//                if (database.isNotEmpty()) {
+//                    Log.d("CryptoFragment", "readDatabase called!")
+//                    mAdapter.setData(database[0].crypto)
+//                    hideShimmerEffect()
+//                } else {
+//                    requestApiData()
+//                }
+//            }
+//        }
+//    }
 
-    private fun requestApiData() {
+    fun requestApiData() {
         Log.d("CryptoFragment", "requestApiData called!")
         mainViewModel.getCrypto(cryptoViewModel.applyQuery())
         mainViewModel.cryptoResponse.observe(viewLifecycleOwner) { response ->
@@ -60,6 +65,7 @@ class CryptoFragment : Fragment() {
                 }
                 is NetworkResult.Error -> {
                     hideShimmerEffect()
+                    loadDataFromCache()
                     Toast.makeText(
                         requireContext(),
                         response.message.toString(),
@@ -73,6 +79,13 @@ class CryptoFragment : Fragment() {
         }
     }
 
+    private fun loadDataFromCache() {
+        lifecycleScope.launch {
+            mainViewModel.readCryptos.observe(viewLifecycleOwner) { database ->
+                mAdapter.setData(database[0].crypto)
+            }
+        }
+    }
 
     private fun setUpRecyclerView() {
         binding.recyclerview.adapter = mAdapter
