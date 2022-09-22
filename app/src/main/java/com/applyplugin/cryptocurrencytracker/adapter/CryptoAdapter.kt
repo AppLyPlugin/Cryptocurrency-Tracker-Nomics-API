@@ -28,7 +28,6 @@ class CryptoAdapter : RecyclerView.Adapter<CryptoAdapter.MyViewHolder>() {
                 return MyViewHolder(binding)
             }
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -50,5 +49,6 @@ class CryptoAdapter : RecyclerView.Adapter<CryptoAdapter.MyViewHolder>() {
         crypto = newData
         //notifyDataSetChanged()
         diffUtilResult.dispatchUpdatesTo(this)
+        //setHasStableIds(true)
     }
 }

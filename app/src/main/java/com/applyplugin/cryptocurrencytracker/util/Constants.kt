@@ -14,6 +14,7 @@ class Constants {
         const val QUERY_INTERVAL = "interval"
         const val QUERY_CURRENCY = "quote-currency"
         const val QUERY_STATUS = "status"
+        const val QUERY_FILTER = "filter"
         const val QUERY_PER_PAGE = "per-page"
         const val QUERY_PAGE = "page"
 
@@ -21,6 +22,11 @@ class Constants {
         const val DATABASE_NAME = "crypto_database"
         const val CRYPTO_TABLE = "crypto_table"
 
+        //Filter & Data Store Preferences
+        const val PREF_NAME = "crypto_preferences"
+        const val FILTER_FILTER = "any"
+        const val PREF_FILTER_FILTER_KEY = "filter"
+        const val PREF_FILTER_FILTER_ID = "filterID"
     }
 
     enum class Currency(val currency: String){
@@ -28,10 +34,12 @@ class Constants {
         EUR("EUR")
     }
 
-    enum class Status(val status : String){
+    enum class Filter(val filter : String){
+        all(""),
         active("active"),
         inactive("inactive"),
-        dead("dead")
+        dead("dead"),
+        fNew("new")
     }
 
 }

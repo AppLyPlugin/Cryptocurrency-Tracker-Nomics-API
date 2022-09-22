@@ -9,10 +9,27 @@
         android:id="@+id/cryptoFragment"
         android:name="com.applyplugin.cryptocurrencytracker.ui.CryptoFragment"
         android:label="@string/crpto_frag"
-        tools:layout="@layout/fragment_crypto" />
+        tools:layout="@layout/fragment_crypto" >
+        <action
+            android:id="@+id/action_cryptoFragment_to_cryptoFilterDialogFragment"
+            app:destination="@id/cryptoFilterDialogFragment" />
+        <argument
+            android:name="backToCryptoFragment"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
     <fragment
         android:id="@+id/watchFragment"
         android:name="com.applyplugin.cryptocurrencytracker.ui.WatcherFragment"
         android:label="@string/watch_frag"
         tools:layout="@layout/watcher_favorites" />
+    <dialog
+        android:id="@+id/cryptoFilterDialogFragment"
+        android:name="com.applyplugin.cryptocurrencytracker.ui.CryptoFilerDialogFragment"
+        android:label="fragment_crypto_filter_dialog"
+        tools:layout="@layout/fragment_crypto_filter_dialog" >
+        <action
+            android:id="@+id/action_cryptoFilterDialogFragment_to_cryptoFragment"
+            app:destination="@id/cryptoFragment"/>
+    </dialog>
 </navigation>

@@ -7,4 +7,12 @@
     <string name="crpto_frag">Cryptocurrency</string>
     <string name="watch_frag">Watcher</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="filter_all">All</string>
+    <string name="filter_active">Active</string>
+    <string name="filter_inactive">Inactive</string>
+    <string name="filter_dead">Dead</string>
+    <string name="filter_new">New</string>
+    <string name="notApplicable">N/A</string>
+
 </resources>

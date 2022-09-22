@@ -21,7 +21,6 @@ class MainViewModel @Inject constructor(
     application: Application
 ) : AndroidViewModel(application) {
 
-
     /************ ROOM DATABASE ************/
 
     val readCryptos: LiveData<List<CryptoEntity>> =
@@ -37,7 +36,10 @@ class MainViewModel @Inject constructor(
     var cryptoResponse: MutableLiveData<NetworkResult<List<CryptoResponse>>> = MutableLiveData()
 
     fun getCrypto(query: HashMap<String, String>) = viewModelScope.launch {
-        getCryptoSafeCall(query)
+       // while (true) {
+            getCryptoSafeCall(query)
+       //     delay(60000)
+       // }
     }
 
     private suspend fun getCryptoSafeCall(query: HashMap<String, String>) {

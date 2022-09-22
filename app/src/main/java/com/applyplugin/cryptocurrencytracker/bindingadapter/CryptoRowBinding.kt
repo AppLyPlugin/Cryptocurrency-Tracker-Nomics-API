@@ -1,8 +1,7 @@
-package com.applyplugin.cryptocurrencytracker.adapter
+package com.applyplugin.cryptocurrencytracker.bindingadapter
 
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.compose.ui.text.toLowerCase
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.applyplugin.cryptocurrencytracker.R
@@ -30,21 +29,21 @@ class CryptoRowBinding {
 
         @BindingAdapter("setShortenedValue")
         @JvmStatic
-        fun setShortenedValue(textView: TextView, valueComplete: String) {
+        fun setShortenedValue(textView: TextView, valueComplete: String?) {
 
-            var valueFloat = valueComplete.toFloat()
-            textView.text = valueFloat.toString().format("%4f")
+            var valueFloat = valueComplete?.toFloat()
+            textView.text = valueFloat?.toString()?.format("%4f") ?: "0.00"
 
         }
 
         @BindingAdapter("setValuetoPercentage")
         @JvmStatic
-        fun setValuetoPercentage(textView: TextView, decimalValue: String) {
+        fun setValuetoPercentage(textView: TextView, decimalValue: String?) {
 
-            var floatChangePercentage: Float
-            var stringChangePercentage: String
-            floatChangePercentage = decimalValue.toFloat() * 100
-            stringChangePercentage = floatChangePercentage.toString().format("%.4f")
+            var floatChangePercentage: Float?
+            var stringChangePercentage: String?
+            floatChangePercentage = decimalValue?.toFloat()?.times(100)
+            stringChangePercentage = floatChangePercentage?.toString()?.format("%.4f") ?: "0.00"
 
             textView.text = stringChangePercentage + "%"
 
@@ -62,16 +61,18 @@ class CryptoRowBinding {
 
         @BindingAdapter("setTextColor")
         @JvmStatic
-        fun setTextColor(view: TextView, value: String) {
+        fun setTextColor(view: TextView, value: String?) {
 
-            var floatValue: Float = value.toFloat()
+            var floatValue: Float? = value?.toFloat()
 
-            if (floatValue > 0) {
-                view.setTextColor(ContextCompat.getColor(view.context, R.color.positive))
-            } else if (floatValue < 0) {
-                view.setTextColor(ContextCompat.getColor(view.context, R.color.negative))
-            } else {
-                view.setTextColor(ContextCompat.getColor(view.context, R.color.no_change))
+            if (floatValue != null) {
+                if (floatValue > 0) {
+                    view.setTextColor(ContextCompat.getColor(view.context, R.color.positive))
+                } else if (floatValue < 0) {
+                    view.setTextColor(ContextCompat.getColor(view.context, R.color.negative))
+                } else {
+                    view.setTextColor(ContextCompat.getColor(view.context, R.color.no_change))
+                }
             }
 
         }
