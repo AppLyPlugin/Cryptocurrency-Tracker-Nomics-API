@@ -13,3 +13,9 @@ Dependency Injection: Dagger2 and Hilt,
 With Coroutine and Flow
 
 With Data and View Binding
+
+//TODO
+
+1. View Individual Crypto
+2. Add to Watcher
+3. Improve UI
