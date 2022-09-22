@@ -14,7 +14,8 @@ With Coroutine and Flow
 
 With Data and View Binding
 
-//TODO
+
+//TODO:
 
 1. View Individual Crypto
 2. Add to Watcher
