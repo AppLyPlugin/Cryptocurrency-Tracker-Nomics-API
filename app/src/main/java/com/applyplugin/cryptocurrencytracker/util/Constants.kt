@@ -6,7 +6,7 @@ class Constants {
         val BASE_URL: String = "https://api.nomics.com"
         val API_KEY: String = "{INSERT YOUR API KEY HERE}"
         val PER_PAGE: String = "25"
-        val NETWORK_TIMEOUT : Long = 10000
+        val NETWORK_TIMEOUT: Long = 10000
 
         //Query Keys
         const val QUERY_KEY = "key"
@@ -32,12 +32,12 @@ class Constants {
         const val CONNECTIVITY = "connectivity"
     }
 
-    enum class Currency(val currency: String){
+    enum class Currency(val currency: String) {
         USD("USD"),
         EUR("EUR")
     }
 
-    enum class Filter(val filter : String){
+    enum class Filter(val filter: String) {
         all(""),
         active("active"),
         inactive("inactive"),

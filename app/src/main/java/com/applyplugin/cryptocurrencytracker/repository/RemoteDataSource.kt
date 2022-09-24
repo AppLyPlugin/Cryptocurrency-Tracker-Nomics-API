@@ -22,4 +22,9 @@ class RemoteDataSource @Inject constructor(private val cryptoApiInterface: Crypt
 
     }
 
+    suspend fun searchCrypto(query: HashMap<String, String>): Response<List<CryptoResponse>>{
+        return cryptoApiInterface.searchCryptos(query)
+
+    }
+
 }

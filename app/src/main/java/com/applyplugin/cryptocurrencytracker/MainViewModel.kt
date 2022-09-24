@@ -34,6 +34,8 @@ class MainViewModel @Inject constructor(
     /************ RETROFIT ************/
 
     var cryptoResponse: MutableLiveData<NetworkResult<List<CryptoResponse>>> = MutableLiveData()
+    var searchedCryptoResponse: MutableLiveData<NetworkResult<List<CryptoResponse>>> =
+        MutableLiveData()
 
     fun getCrypto(query: HashMap<String, String>) = viewModelScope.launch {
         while (true) {
@@ -42,17 +44,17 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    fun searchCrypto(query: HashMap<String, String>) = viewModelScope.launch {
+        searchCryptoSafeCall(query)
+    }
+
+
     private suspend fun getCryptoSafeCall(query: HashMap<String, String>) {
         cryptoResponse.value = NetworkResult.Loading()
         if (hasInternetConnection()) {
             try {
                 val response = repository.remoteSource.getCrypto(query)
                 cryptoResponse.value = handleCryptoResponse(response)
-
-                val cryptos = cryptoResponse.value!!.data
-                if (cryptos != null) {
-                    offlineCacheCryptos(cryptos)
-                }
 
             } catch (e: Exception) {
                 cryptoResponse.value = NetworkResult.Error("Crypto Not Found")
@@ -63,6 +65,29 @@ class MainViewModel @Inject constructor(
         }
 
     }
+
+    private suspend fun searchCryptoSafeCall(query: HashMap<String, String>) {
+        searchedCryptoResponse.value = NetworkResult.Loading()
+        if (hasInternetConnection()) {
+            try {
+                val response = repository.remoteSource.searchCrypto(query)
+                searchedCryptoResponse.value = handleCryptoResponse(response)
+
+                val cryptos = searchedCryptoResponse.value!!.data
+                if (cryptos != null) {
+                    offlineCacheCryptos(cryptos)
+                }
+
+            } catch (e: Exception) {
+                searchedCryptoResponse.value = NetworkResult.Error("Crypto Not Found")
+                e.stackTrace
+            }
+        } else {
+            searchedCryptoResponse.value = NetworkResult.Error("No Internet Connection")
+        }
+
+    }
+
 
     private fun offlineCacheCryptos(cryptos: List<CryptoResponse>) {
 

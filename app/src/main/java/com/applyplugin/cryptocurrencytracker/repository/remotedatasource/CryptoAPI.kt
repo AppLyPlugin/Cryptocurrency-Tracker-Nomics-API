@@ -17,6 +17,11 @@ interface CryptoAPIInterface {
     ): Response<List<CryptoResponse>>
 
     @GET("v1/currencies/ticker")
+    suspend fun searchCryptos(
+        @QueryMap cryptoSearch: HashMap<String, String>
+    ): Response<List<CryptoResponse>>
+
+    @GET("v1/currencies/ticker")
     suspend fun getAllCrypto(
         @Query("key") key: String,
         @Query("per-page") per_page: String,

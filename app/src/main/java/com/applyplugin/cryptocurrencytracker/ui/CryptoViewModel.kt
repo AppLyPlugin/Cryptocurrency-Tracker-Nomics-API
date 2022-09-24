@@ -85,6 +85,24 @@ class CryptoViewModel @Inject constructor(
         return queries
     }
 
+    fun applySearchQuery(searchQuery: String): HashMap<String, String> {
+
+        val queries: HashMap<String, String> = HashMap()
+
+        queries[QUERY_KEY] = API_KEY
+        queries[QUERY_IDS] = searchQuery
+        queries[QUERY_CURRENCY] = ""
+        queries[QUERY_INTERVAL] = ""
+        queries[QUERY_PER_PAGE] = PER_PAGE
+        queries[QUERY_PAGE] = "1"
+
+        while (queries.values.removeIf { it == "" }) {
+        }
+
+        return queries
+    }
+
+
     fun networkStatus(){
         if(!networkStatus){
             Toast.makeText(getApplication(), "No Internet Connection", Toast.LENGTH_LONG).show()
