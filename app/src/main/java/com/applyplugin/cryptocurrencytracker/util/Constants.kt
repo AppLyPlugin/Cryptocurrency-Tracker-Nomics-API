@@ -27,6 +27,9 @@ class Constants {
         const val FILTER_FILTER = "any"
         const val PREF_FILTER_FILTER_KEY = "filter"
         const val PREF_FILTER_FILTER_ID = "filterID"
+
+        //Network Connectivity
+        const val CONNECTIVITY = "connectivity"
     }
 
     enum class Currency(val currency: String){

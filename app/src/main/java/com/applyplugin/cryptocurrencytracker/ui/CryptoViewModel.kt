@@ -1,7 +1,9 @@
 package com.applyplugin.cryptocurrencytracker.ui
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.applyplugin.cryptocurrencytracker.repository.DataStoreRepository
 import com.applyplugin.cryptocurrencytracker.util.Constants
@@ -31,11 +33,20 @@ class CryptoViewModel @Inject constructor(
     private var status = ""
     private var filter = FILTER_FILTER
 
+    var networkStatus = false
+    var backOnline = false
+
     val readFilter = dataStoreRepository.readFilters
+    val readBackOnline = dataStoreRepository.readConnectivity.asLiveData()
 
     fun saveFilter(selectedFilter: String, selectedFilterId: Int) =
         viewModelScope.launch(Dispatchers.IO) {
             dataStoreRepository.saveFilter(selectedFilter, selectedFilterId)
+        }
+
+    fun saveBackOnline(backOnline : Boolean) =
+        viewModelScope.launch(Dispatchers.IO) {
+            dataStoreRepository.saveConnectivity(backOnline)
         }
 
     fun applyQuery(): HashMap<String, String> {
@@ -72,5 +83,17 @@ class CryptoViewModel @Inject constructor(
         }
 
         return queries
+    }
+
+    fun networkStatus(){
+        if(!networkStatus){
+            Toast.makeText(getApplication(), "No Internet Connection", Toast.LENGTH_LONG).show()
+            saveBackOnline(true)
+        } else if(networkStatus){
+            if(backOnline){
+                Toast.makeText(getApplication(), "We're Back Online", Toast.LENGTH_LONG).show()
+                saveBackOnline(false)
+            }
+        }
     }
 }

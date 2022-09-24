@@ -36,10 +36,10 @@ class MainViewModel @Inject constructor(
     var cryptoResponse: MutableLiveData<NetworkResult<List<CryptoResponse>>> = MutableLiveData()
 
     fun getCrypto(query: HashMap<String, String>) = viewModelScope.launch {
-       // while (true) {
+        while (true) {
             getCryptoSafeCall(query)
-       //     delay(60000)
-       // }
+            delay(60000)
+        }
     }
 
     private suspend fun getCryptoSafeCall(query: HashMap<String, String>) {

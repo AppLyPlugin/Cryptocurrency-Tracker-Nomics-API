@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
+import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.CONNECTIVITY
 import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.FILTER_FILTER
 import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.PREF_FILTER_FILTER_ID
 import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.PREF_FILTER_FILTER_KEY
@@ -25,6 +26,7 @@ class DataStoreRepository @Inject constructor(@ApplicationContext private val co
     private object PreferenceKey {
         val selectedFilter = stringPreferencesKey(PREF_FILTER_FILTER_KEY)
         val selectedFilterId = intPreferencesKey(PREF_FILTER_FILTER_ID)
+        val connectivity = booleanPreferencesKey(CONNECTIVITY)
     }
 
     suspend fun saveFilter(filter: String, filterId: Int) {
@@ -49,7 +51,28 @@ class DataStoreRepository @Inject constructor(@ApplicationContext private val co
                 selectedFilter,
                 selectedFilterId
             )
-         }
+        }
+
+
+    suspend fun saveConnectivity(connectivity: Boolean) {
+        context.dataStore.edit { preferences ->
+            preferences[PreferenceKey.connectivity] = connectivity
+
+        }
+    }
+
+    val readConnectivity: Flow<Boolean> = context.dataStore.data
+        .catch { exception ->
+            if (exception is IOException) {
+                emit(emptyPreferences())
+            } else {
+                throw exception
+            }
+        }
+        .map { preferences ->
+            val connectivity = preferences[PreferenceKey.connectivity] ?: false
+            connectivity
+        }
 
 }
 
