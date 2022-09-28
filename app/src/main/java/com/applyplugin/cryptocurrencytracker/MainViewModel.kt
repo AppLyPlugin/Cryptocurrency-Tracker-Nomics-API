@@ -8,6 +8,7 @@ import androidx.lifecycle.*
 import com.applyplugin.cryptocurrencytracker.model.CryptoResponse
 import com.applyplugin.cryptocurrencytracker.repository.Repository
 import com.applyplugin.cryptocurrencytracker.repository.database.CryptoEntity
+import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.REFRESH_CRYPTO
 import com.applyplugin.cryptocurrencytracker.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
@@ -38,9 +39,10 @@ class MainViewModel @Inject constructor(
         MutableLiveData()
 
     fun getCrypto(query: HashMap<String, String>) = viewModelScope.launch {
-        while (true) {
+        @Suppress("DEPRECATION")
+        while (NonCancellable.isActive) {
             getCryptoSafeCall(query)
-            delay(60000)
+            delay(REFRESH_CRYPTO)
         }
     }
 
@@ -55,6 +57,11 @@ class MainViewModel @Inject constructor(
             try {
                 val response = repository.remoteSource.getCrypto(query)
                 cryptoResponse.value = handleCryptoResponse(response)
+
+                val cryptos = cryptoResponse.value!!.data
+                if(cryptos != null){
+                    offlineCacheCryptos(cryptos)
+                }
 
             } catch (e: Exception) {
                 cryptoResponse.value = NetworkResult.Error("Crypto Not Found")

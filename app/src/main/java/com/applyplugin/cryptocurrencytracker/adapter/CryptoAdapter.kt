@@ -2,7 +2,6 @@ package com.applyplugin.cryptocurrencytracker.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.compose.ui.layout.Layout
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.applyplugin.cryptocurrencytracker.databinding.CryptoRowLayoutBinding
@@ -49,6 +48,6 @@ class CryptoAdapter : RecyclerView.Adapter<CryptoAdapter.MyViewHolder>() {
         crypto = newData
         //notifyDataSetChanged()
         diffUtilResult.dispatchUpdatesTo(this)
-        //setHasStableIds(true)
     }
+
 }

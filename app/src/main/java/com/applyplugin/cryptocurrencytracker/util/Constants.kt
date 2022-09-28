@@ -3,10 +3,16 @@ package com.applyplugin.cryptocurrencytracker.util
 class Constants {
 
     companion object {
-        val BASE_URL: String = "https://api.nomics.com"
-        val API_KEY: String = "{INSERT YOUR API KEY HERE}"
-        val PER_PAGE: String = "25"
+        const val BASE_URL: String = "https://api.nomics.com"
+        const val API_KEY: String = "{INSERT YOUR API KEY HERE}"
+        const val PER_PAGE: String = "100"
+        const val REFRESH_CRYPTO : Long = 60000
         val NETWORK_TIMEOUT: Long = 10000
+
+        //contants for required null values
+        const val nullValueInt = "0"
+        const val nullValueFloat = "0.00"
+        const val nullDateandTime = "0000-00-00 00:00:00"
 
         //Query Keys
         const val QUERY_KEY = "key"

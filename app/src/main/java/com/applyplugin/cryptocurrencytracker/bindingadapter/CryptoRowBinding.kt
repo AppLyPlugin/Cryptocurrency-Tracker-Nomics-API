@@ -5,6 +5,8 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.applyplugin.cryptocurrencytracker.R
+import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.nullDateandTime
+import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.nullValueFloat
 import com.squareup.picasso.Picasso
 
 class CryptoRowBinding {
@@ -32,7 +34,7 @@ class CryptoRowBinding {
         fun setShortenedValue(textView: TextView, valueComplete: String?) {
 
             var valueFloat = valueComplete?.toFloat()
-            textView.text = valueFloat?.toString()?.format("%4f") ?: "0.00"
+            textView.text = valueFloat?.toString()?.format("%4f") ?: nullValueFloat
 
         }
 
@@ -43,7 +45,7 @@ class CryptoRowBinding {
             var floatChangePercentage: Float?
             var stringChangePercentage: String?
             floatChangePercentage = decimalValue?.toFloat()?.times(100)
-            stringChangePercentage = floatChangePercentage?.toString()?.format("%.4f") ?: "0.00"
+            stringChangePercentage = floatChangePercentage?.toString()?.format("%.4f") ?: nullValueFloat
 
             textView.text = stringChangePercentage + "%"
 
@@ -51,12 +53,12 @@ class CryptoRowBinding {
 
         @BindingAdapter("formatDateAndTime")
         @JvmStatic
-        fun formatDateAndTime(textView: TextView, dateAndTime: String) {
+        fun formatDateAndTime(textView: TextView, dateAndTime: String?) {
 
 //            val priceTimestamp: LocalDateTime = LocalDateTime.parse(dateAndTime)
 //            val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")
 //            textView.text = formatter.format(priceTimestamp)
-            textView.text = dateAndTime.replace("T", " ").replace("Z", "")
+            textView.text = dateAndTime?.replace("T", " ")?.replace("Z", "") ?: nullDateandTime
         }
 
         @BindingAdapter("setTextColor")

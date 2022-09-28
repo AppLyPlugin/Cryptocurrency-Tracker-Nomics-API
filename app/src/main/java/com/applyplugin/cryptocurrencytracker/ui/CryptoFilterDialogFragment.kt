@@ -15,7 +15,6 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import java.util.*
 
-@Suppress("DEPRECATION")
 class CryptoFilerDialogFragment : BottomSheetDialogFragment() {
 
     private lateinit var cryptoViewModel: CryptoViewModel //by viewModels()
@@ -44,6 +43,7 @@ class CryptoFilerDialogFragment : BottomSheetDialogFragment() {
 
         }
 
+        @Suppress("DEPRECATION")
         binding.chipFilterGroup.setOnCheckedChangeListener{ chipGroup, selectedChipId ->
             val chip = chipGroup.findViewById<Chip>(selectedChipId)
             val selectedMealType = chip.text.toString().toLowerCase(Locale.ROOT)

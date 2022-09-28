@@ -20,7 +20,6 @@ import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.QUERY_PER_
 import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.QUERY_STATUS
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
