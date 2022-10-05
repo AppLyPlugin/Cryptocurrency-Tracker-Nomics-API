@@ -1,8 +1,11 @@
 package com.applyplugin.cryptocurrencytracker.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 import retrofit2.Response
 
+@Parcelize
 data class CryptoResponse(
 
     @SerializedName("circulating_supply")
@@ -10,13 +13,13 @@ data class CryptoResponse(
     @SerializedName("currency")
     val currency: String,
     @SerializedName("1d")
-    val day1: priceChange,
+    val day1: PriceChange,
     @SerializedName("7d")
-    val day7: priceChange,
+    val day7: PriceChange,
     @SerializedName("30d")
-    val day30: priceChange,
+    val day30: PriceChange,
     @SerializedName("365d")
-    val day365: priceChange,
+    val day365: PriceChange,
     @SerializedName("first_candle")
     val firstCandle: String,
     @SerializedName("first_order_book")
@@ -60,11 +63,12 @@ data class CryptoResponse(
     @SerializedName("symbol")
     val symbol: String,
     @SerializedName("ytd")
-    val ytd: priceChange
+    val ytd: PriceChange
 
-)
+): Parcelable
 
-data class priceChange(
+@Parcelize
+data class PriceChange(
     @SerializedName("market_cap_change")
     val marketCapChange: String,
     @SerializedName("market_cap_change_pct")
@@ -79,5 +83,5 @@ data class priceChange(
     val volumeChange: String,
     @SerializedName("volume_change_pct")
     val volumeChangePct: String
-)
+):Parcelable
 

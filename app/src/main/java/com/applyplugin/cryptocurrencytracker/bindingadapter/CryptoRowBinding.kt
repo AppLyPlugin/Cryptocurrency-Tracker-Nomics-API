@@ -2,9 +2,13 @@ package com.applyplugin.cryptocurrencytracker.bindingadapter
 
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import androidx.navigation.findNavController
 import com.applyplugin.cryptocurrencytracker.R
+import com.applyplugin.cryptocurrencytracker.model.CryptoResponse
+import com.applyplugin.cryptocurrencytracker.ui.CryptoFragmentDirections
 import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.nullDateandTime
 import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.nullValueFloat
 import com.squareup.picasso.Picasso
@@ -12,6 +16,21 @@ import com.squareup.picasso.Picasso
 class CryptoRowBinding {
 
     companion object {
+
+        @BindingAdapter("onCryptoClickListener")
+        @JvmStatic
+        fun onCryptoClickListener(cryptoRowLayout: ConstraintLayout, details: CryptoResponse){
+            cryptoRowLayout.setOnClickListener{
+                try{
+                    val action =
+                        CryptoFragmentDirections.actionCryptoFragmentToCryptoDetails(details)
+                    cryptoRowLayout.findNavController().navigate(action)
+                }catch (e: Exception){
+                    e.printStackTrace()
+                }
+            }
+
+        }
 
         @BindingAdapter("name", "symbol")
         @JvmStatic

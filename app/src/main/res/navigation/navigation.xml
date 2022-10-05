@@ -17,6 +17,9 @@
             android:name="backToCryptoFragment"
             app:argType="boolean"
             android:defaultValue="false" />
+        <action
+            android:id="@+id/action_cryptoFragment_to_cryptoDetails"
+            app:destination="@id/cryptoDetails" />
     </fragment>
     <fragment
         android:id="@+id/watchFragment"
@@ -32,4 +35,13 @@
             android:id="@+id/action_cryptoFilterDialogFragment_to_cryptoFragment"
             app:destination="@id/cryptoFragment"/>
     </dialog>
+    <activity
+        android:id="@+id/cryptoDetails"
+        android:name="com.applyplugin.cryptocurrencytracker.ui.cryptodetails.CryptoDetails"
+        android:label="activity_crypto_details"
+        tools:layout="@layout/activity_crypto_details" >
+        <argument
+            android:name="cryptoDetails"
+            app:argType="com.applyplugin.cryptocurrencytracker.model.CryptoResponse" />
+    </activity>
 </navigation>

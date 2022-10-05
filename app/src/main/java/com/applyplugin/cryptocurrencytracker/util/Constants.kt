@@ -36,6 +36,15 @@ class Constants {
 
         //Network Connectivity
         const val CONNECTIVITY = "connectivity"
+
+        //Crypto Details
+        const val CRYPTO_BUNDLE = "detailBundle"
+        const val CRYPTO_DETAIL_TITLE_DAY1 = "24H"
+        const val CRYPTO_DETAIL_TITLE_DAY7 = "DAY7"
+        const val CRYPTO_DETAIL_TITLE_DAY30 = "DAY30"
+        const val CRYPTO_DETAIL_TITLE_DAY365 = "DAY365"
+        const val CRYPTO_DETAIL_TITLE_YTD = "YTD"
+
     }
 
     enum class Currency(val currency: String) {
