@@ -19,3 +19,5 @@ With Data and View Binding
 
 1. Add to Watcher
 2. Improve UI
+
+//NOTE: NOMICS FREE API IS UNDER MAINTENANCE
