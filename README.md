@@ -17,7 +17,7 @@ With Data and View Binding
 
 //TODO:
 
-1. Add to Watcher
+1. Add to Watchlist
 2. Improve UI
 
 //NOTE: NOMICS FREE API IS UNDER MAINTENANCE
