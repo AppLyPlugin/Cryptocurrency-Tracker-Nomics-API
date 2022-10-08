@@ -93,50 +93,6 @@
                 android:padding="4dp">
 
                 <TextView
-                    android:id="@+id/labelHigh"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="High:" />
-
-                <TextView
-                    android:id="@+id/valueHigh"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="right"
-                    android:text="100000" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:padding="4dp">
-
-                <TextView
-                    android:id="@+id/labelHighTmStmp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="High Timestamp:" />
-
-                <TextView
-                    android:id="@+id/valueHighTmStmp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="right"
-                    android:text="00-00-000 00:00:00" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="4dp">
-
-                <TextView
                     android:id="@+id/labelMrktCpChng"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -149,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:text="100000" />
+                    android:text="10000" />
             </LinearLayout>
 
             <LinearLayout

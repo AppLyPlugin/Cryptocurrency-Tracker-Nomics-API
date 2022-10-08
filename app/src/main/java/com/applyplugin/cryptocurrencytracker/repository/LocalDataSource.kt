@@ -1,8 +1,7 @@
 package com.applyplugin.cryptocurrencytracker.repository
 
-import com.applyplugin.cryptocurrencytracker.model.CryptoResponse
 import com.applyplugin.cryptocurrencytracker.repository.database.CryptoDao
-import com.applyplugin.cryptocurrencytracker.repository.database.CryptoEntity
+import com.applyplugin.cryptocurrencytracker.repository.database.entity.CryptoEntity
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

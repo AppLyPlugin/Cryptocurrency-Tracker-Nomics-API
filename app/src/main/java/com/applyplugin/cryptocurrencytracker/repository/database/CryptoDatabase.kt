@@ -3,9 +3,9 @@ package com.applyplugin.cryptocurrencytracker.repository.database
 import android.content.Context
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import com.applyplugin.cryptocurrencytracker.di.DatabaseModule.provideDatabase
+import com.applyplugin.cryptocurrencytracker.repository.database.entity.CryptoEntity
 
 @Database(
     entities = [CryptoEntity::class],

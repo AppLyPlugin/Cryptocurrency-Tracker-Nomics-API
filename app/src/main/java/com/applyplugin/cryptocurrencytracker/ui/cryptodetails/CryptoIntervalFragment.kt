@@ -7,12 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import com.applyplugin.cryptocurrencytracker.databinding.FragmentCryptoIntervalBinding
 import com.applyplugin.cryptocurrencytracker.model.PriceChange
+import com.applyplugin.cryptocurrencytracker.bindingadapter.CryptoDetailsBinding
 import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.CRYPTO_BUNDLE
 
 class CryptoIntervalFragment : Fragment() {
 
     private var _binding: FragmentCryptoIntervalBinding? = null
     private val binding get() = _binding!!
+
+    private val adapter = CryptoDetailsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,10 +29,10 @@ class CryptoIntervalFragment : Fragment() {
         val bundle: PriceChange = args!!.getParcelable<PriceChange>(CRYPTO_BUNDLE) as PriceChange
 
         binding.valueVolume.text = bundle.volume
-        binding.valueVolChng.text = bundle.volumeChange
-        binding.valueVolChngPrcnt.text = bundle.volumeChangePct
-        binding.valueMrktCpChng.text = bundle.marketCapChange
-        binding.valueMrktCpChngPrcnt.text = bundle.marketCapChangePct
+        binding.valueVolChng.text = bundle.volumeChange?.let { adapter.formatRound2Decimals(it) }
+        binding.valueVolChngPrcnt.text = bundle.volumeChangePct?.let { adapter.formatToPercentage(it) }
+        binding.valueMrktCpChng.text = bundle.marketCapChange?.let { adapter.formatRound2Decimals(it) }
+        binding.valueMrktCpChngPrcnt.text = bundle.marketCapChangePct?.let {adapter.formatToPercentage(it)}
 
         return binding.root
     }

@@ -2,16 +2,20 @@ package com.applyplugin.cryptocurrencytracker.bindingadapter
 
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.compose.foundation.Image
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.navigation.findNavController
+import coil.load
+import coil.size.Precision
+import coil.size.Scale
+import coil.transform.CircleCropTransformation
 import com.applyplugin.cryptocurrencytracker.R
 import com.applyplugin.cryptocurrencytracker.model.CryptoResponse
 import com.applyplugin.cryptocurrencytracker.ui.CryptoFragmentDirections
 import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.nullDateandTime
 import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.nullValueFloat
-import com.squareup.picasso.Picasso
 
 class CryptoRowBinding {
 
@@ -19,13 +23,13 @@ class CryptoRowBinding {
 
         @BindingAdapter("onCryptoClickListener")
         @JvmStatic
-        fun onCryptoClickListener(cryptoRowLayout: ConstraintLayout, details: CryptoResponse){
-            cryptoRowLayout.setOnClickListener{
-                try{
+        fun onCryptoClickListener(cryptoRowLayout: ConstraintLayout, details: CryptoResponse) {
+            cryptoRowLayout.setOnClickListener {
+                try {
                     val action =
                         CryptoFragmentDirections.actionCryptoFragmentToCryptoDetails(details)
                     cryptoRowLayout.findNavController().navigate(action)
-                }catch (e: Exception){
+                } catch (e: Exception) {
                     e.printStackTrace()
                 }
             }
@@ -36,16 +40,19 @@ class CryptoRowBinding {
         @JvmStatic
         fun loadImageFromUrl(imageView: ImageView, name: String, symbol: String) {
 
-            Picasso.with(imageView.context)
+            imageView
                 .load(
                     "https://cryptologos.cc/logos/${
                         name.toLowerCase().replace(" ", "-")
                     }-${symbol.toLowerCase()}-logo.png?v=023"
-                )
-                .resize(150, 150)
-                .error(R.drawable.ic_error_loading_image)
-                .into(imageView)
-
+                ) {
+                    crossfade(true)
+                    placeholder(R.drawable.ic_error_loading_image)
+                    error(R.drawable.ic_error_loading_image)
+                    transformations(CircleCropTransformation())
+                    precision(Precision.EXACT)
+                    scale(Scale.FILL)
+                }
         }
 
         @BindingAdapter("setShortenedValue")
@@ -64,7 +71,8 @@ class CryptoRowBinding {
             var floatChangePercentage: Float?
             var stringChangePercentage: String?
             floatChangePercentage = decimalValue?.toFloat()?.times(100)
-            stringChangePercentage = floatChangePercentage?.toString()?.format("%.4f") ?: nullValueFloat
+            stringChangePercentage =
+                floatChangePercentage?.toString()?.format("%.4f") ?: nullValueFloat
 
             textView.text = stringChangePercentage + "%"
 

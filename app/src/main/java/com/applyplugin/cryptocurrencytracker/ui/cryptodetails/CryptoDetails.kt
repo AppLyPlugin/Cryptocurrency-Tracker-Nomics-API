@@ -3,10 +3,12 @@ package com.applyplugin.cryptocurrencytracker.ui.cryptodetails
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.compose.ui.text.toUpperCase
 import androidx.fragment.app.Fragment
 import androidx.navigation.navArgs
 import com.applyplugin.cryptocurrencytracker.databinding.ActivityCryptoDetailsBinding
 import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.CRYPTO_BUNDLE
+import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.CRYPTO_DETAIL
 import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.CRYPTO_DETAIL_TITLE_DAY1
 import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.CRYPTO_DETAIL_TITLE_DAY30
 import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.CRYPTO_DETAIL_TITLE_DAY365
@@ -25,6 +27,8 @@ class CryptoDetails : AppCompatActivity() {
         binding = ActivityCryptoDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        this.setTitle(args.cryptoDetails.name.toUpperCase())
+
         val fragments = ArrayList<Fragment>()
         fragments.add(CryptoIntervalFragment())
         fragments.add(CryptoIntervalFragment())
@@ -39,12 +43,14 @@ class CryptoDetails : AppCompatActivity() {
         titles.add(CRYPTO_DETAIL_TITLE_DAY365)
         titles.add(CRYPTO_DETAIL_TITLE_YTD)
 
+        val bundleDetail = Bundle()
         val bundleDay1 = Bundle()
         val bundleDay7 = Bundle()
         val bundleDay30 = Bundle()
         val bundleDay365 = Bundle()
         val bundleYTD = Bundle()
 
+        bundleDetail.putParcelable(CRYPTO_DETAIL, args.cryptoDetails)
         bundleDay1.putParcelable(CRYPTO_BUNDLE, args.cryptoDetails.day1)
         bundleDay7.putParcelable(CRYPTO_BUNDLE, args.cryptoDetails.day7)
         bundleDay30.putParcelable(CRYPTO_BUNDLE, args.cryptoDetails.day30)
@@ -69,6 +75,7 @@ class CryptoDetails : AppCompatActivity() {
             adapter = pagerAdapter
         }
 
+        binding.fragmentContainerView.getFragment<CryptoDetailsFragment>().arguments = bundleDetail
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = titles[position]

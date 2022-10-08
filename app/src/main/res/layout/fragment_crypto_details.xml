@@ -4,19 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.cryptodetails.CryptoDetailsFragment" >
-
-    <TextView
-        android:id="@+id/cryptoRank"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
-        android:text="Rank #1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".ui.cryptodetails.CryptoDetailsFragment">
 
     <ImageView
         android:id="@+id/cryptoLogo"
@@ -30,6 +18,18 @@
         tools:src="@drawable/ic_crpto_frag_error" />
 
     <TextView
+        android:id="@+id/cryptoRank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:text="Rank #1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/cryptoName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,8 +41,8 @@
 
     <TextView
         android:id="@+id/cryptoSymbol"
-        android:layout_width="58dp"
-        android:layout_height="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Crypto Symbol"
         app:layout_constraintEnd_toEndOf="@+id/cryptoName"
@@ -54,21 +54,144 @@
         android:id="@+id/cryptoStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:text="Status"
+        app:layout_constraintStart_toStartOf="@+id/timeStamp"
+        app:layout_constraintTop_toBottomOf="@+id/timeStamp" />
+
+    <TextView
+        android:id="@+id/timeStamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Time Stamp"
+        app:layout_constraintEnd_toEndOf="@+id/cryptoPrice"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cryptoPrice"
+        app:layout_constraintTop_toBottomOf="@+id/cryptoPrice" />
+
+    <TextView
+        android:id="@+id/valueHigh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/labelHigh"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <TextView
+        android:id="@+id/labelHigh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="High:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <TextView
+        android:id="@+id/cryptoPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Price"
         app:layout_constraintEnd_toEndOf="@+id/cryptoLogo"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/cryptoLogo"
         app:layout_constraintTop_toBottomOf="@+id/cryptoLogo" />
 
     <TextView
-        android:id="@+id/timeStamp"
+        android:id="@+id/labelHighTmStmp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Time Stamp"
-        app:layout_constraintEnd_toEndOf="@+id/cryptoStatus"
+        android:layout_marginTop="4dp"
+        android:text="High Timestamp:"
+        app:layout_constraintStart_toStartOf="@+id/labelHigh"
+        app:layout_constraintTop_toBottomOf="@+id/labelHigh" />
+
+    <TextView
+        android:id="@+id/valueHighTmStmp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/valueHigh"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/valueHigh"
+        app:layout_constraintTop_toBottomOf="@+id/valueHigh" />
+
+    <TextView
+        android:id="@+id/labelMaxSupply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Max Supply:"
+        app:layout_constraintStart_toStartOf="@+id/labelHighTmStmp"
+        app:layout_constraintTop_toBottomOf="@+id/labelHighTmStmp" />
+
+    <TextView
+        android:id="@+id/valueMaxSupply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/valueHighTmStmp"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/valueHighTmStmp"
+        app:layout_constraintTop_toBottomOf="@+id/valueHighTmStmp" />
+
+    <TextView
+        android:id="@+id/labelMarketCap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Market Cap:"
+        app:layout_constraintStart_toStartOf="@+id/labelMaxSupply"
+        app:layout_constraintTop_toBottomOf="@+id/labelMaxSupply" />
+
+    <TextView
+        android:id="@+id/valueMarketCap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/valueMaxSupply"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/valueMaxSupply"
+        app:layout_constraintTop_toBottomOf="@+id/valueMaxSupply" />
+
+    <TextView
+        android:id="@+id/labelMarketCapPrcnt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Market Cap %:"
+        app:layout_constraintEnd_toEndOf="@+id/labelMarketCap"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/cryptoStatus"
+        app:layout_constraintStart_toStartOf="@+id/labelMarketCap"
+        app:layout_constraintTop_toBottomOf="@+id/labelMarketCap" />
+
+    <TextView
+        android:id="@+id/valueMarketCapPrcnt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/valueMarketCap"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/valueMarketCap"
+        app:layout_constraintTop_toBottomOf="@+id/valueMarketCap" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cryptoStatus" />
 </androidx.constraintlayout.widget.ConstraintLayout>

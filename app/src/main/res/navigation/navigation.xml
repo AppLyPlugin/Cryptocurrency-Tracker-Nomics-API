@@ -23,9 +23,9 @@
     </fragment>
     <fragment
         android:id="@+id/watchFragment"
-        android:name="com.applyplugin.cryptocurrencytracker.ui.WatcherFragment"
+        android:name="com.applyplugin.cryptocurrencytracker.ui.WatchlistFragment"
         android:label="@string/watch_frag"
-        tools:layout="@layout/watcher_favorites" />
+        tools:layout="@layout/fragment_watchlist" />
     <dialog
         android:id="@+id/cryptoFilterDialogFragment"
         android:name="com.applyplugin.cryptocurrencytracker.ui.CryptoFilerDialogFragment"

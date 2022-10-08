@@ -95,8 +95,8 @@ dependencies {
     //Data Binding
     implementation "com.android.databinding:compiler:3.1.4"
 
-    //Picasso Image Loader
-    implementation 'com.squareup.picasso:picasso:2.5.2'
+    //Coil Image Loader
+    implementation("io.coil-kt:coil-compose:2.2.2")
 
     //Room Database
     implementation("androidx.room:room-ktx:$room_version")

@@ -27,6 +27,7 @@ class Constants {
         //ROOM Database
         const val DATABASE_NAME = "crypto_database"
         const val CRYPTO_TABLE = "crypto_table"
+        const val WATCHLIST_TABLE = "watchlist_table"
 
         //Filter & Data Store Preferences
         const val PREF_NAME = "crypto_preferences"
@@ -39,6 +40,7 @@ class Constants {
 
         //Crypto Details
         const val CRYPTO_BUNDLE = "detailBundle"
+        const val CRYPTO_DETAIL = "cryptoDetails"
         const val CRYPTO_DETAIL_TITLE_DAY1 = "24H"
         const val CRYPTO_DETAIL_TITLE_DAY7 = "DAY7"
         const val CRYPTO_DETAIL_TITLE_DAY30 = "DAY30"

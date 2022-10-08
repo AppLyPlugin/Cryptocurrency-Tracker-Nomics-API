@@ -3,7 +3,7 @@ package com.applyplugin.cryptocurrencytracker.bindingadapter
 import android.view.View
 import androidx.databinding.BindingAdapter
 import com.applyplugin.cryptocurrencytracker.model.CryptoResponse
-import com.applyplugin.cryptocurrencytracker.repository.database.CryptoEntity
+import com.applyplugin.cryptocurrencytracker.repository.database.entity.CryptoEntity
 import com.applyplugin.cryptocurrencytracker.util.NetworkResult
 
 class CryptoFragmentBinding {

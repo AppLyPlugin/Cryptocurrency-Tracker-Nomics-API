@@ -1,4 +1,4 @@
-package com.applyplugin.cryptocurrencytracker.repository.database
+package com.applyplugin.cryptocurrencytracker.repository.database.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

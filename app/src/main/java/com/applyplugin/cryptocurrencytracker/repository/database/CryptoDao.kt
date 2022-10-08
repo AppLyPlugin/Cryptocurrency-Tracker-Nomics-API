@@ -1,6 +1,7 @@
 package com.applyplugin.cryptocurrencytracker.repository.database
 
 import androidx.room.*
+import com.applyplugin.cryptocurrencytracker.repository.database.entity.CryptoEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

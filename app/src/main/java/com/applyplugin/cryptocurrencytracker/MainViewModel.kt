@@ -7,7 +7,7 @@ import android.net.NetworkCapabilities
 import androidx.lifecycle.*
 import com.applyplugin.cryptocurrencytracker.model.CryptoResponse
 import com.applyplugin.cryptocurrencytracker.repository.Repository
-import com.applyplugin.cryptocurrencytracker.repository.database.CryptoEntity
+import com.applyplugin.cryptocurrencytracker.repository.database.entity.CryptoEntity
 import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.REFRESH_CRYPTO
 import com.applyplugin.cryptocurrencytracker.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
