@@ -17,6 +17,7 @@ With Data and View Binding
 
 //TODO:
 
-1. View Individual Crypto
-2. Add to Watcher
-3. Improve UI
+1. Add to Watchlist
+2. Improve UI
+
+//NOTE: NOMICS FREE API IS UNDER MAINTENANCE
