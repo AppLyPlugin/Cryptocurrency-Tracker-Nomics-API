@@ -43,8 +43,8 @@ class CryptoRowBinding {
             imageView
                 .load(
                     "https://cryptologos.cc/logos/${
-                        name.toLowerCase().replace(" ", "-")
-                    }-${symbol.toLowerCase()}-logo.png?v=023"
+                        name.lowercase().replace(" ", "-")
+                    }-${symbol.lowercase()}-logo.png?v=023"
                 ) {
                     crossfade(true)
                     placeholder(R.drawable.ic_error_loading_image)

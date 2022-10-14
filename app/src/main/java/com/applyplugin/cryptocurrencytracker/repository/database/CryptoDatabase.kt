@@ -6,24 +6,25 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.applyplugin.cryptocurrencytracker.di.DatabaseModule.provideDatabase
 import com.applyplugin.cryptocurrencytracker.repository.database.entity.CryptoEntity
+import com.applyplugin.cryptocurrencytracker.repository.database.entity.WatchlistEntity
 
 @Database(
-    entities = [CryptoEntity::class],
+    entities = [CryptoEntity::class, WatchlistEntity::class],
     version = 1,
     exportSchema = false
 )
 @TypeConverters(CryptoTypeConverter::class)
-abstract class CryptoDatabase: RoomDatabase() {
+abstract class CryptoDatabase : RoomDatabase() {
 
     abstract fun cryptoDao(): CryptoDao
 
-    companion object{
+    companion object {
         @Volatile
         private var instance: CryptoDatabase? = null
         private val LOCK = Any()
 
-        operator fun invoke(context: Context) = instance ?: synchronized(LOCK){
-            instance ?: provideDatabase(context).also{ instance = it}
+        operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
+            instance ?: provideDatabase(context).also { instance = it }
         }
 
     }

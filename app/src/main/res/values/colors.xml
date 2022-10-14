@@ -16,6 +16,7 @@
     <color name="no_change">#E6E8EA</color>
     <color name="lightGray">#F9F9F9</color>
     <color name="darkGray">#4B4B4B</color>
+    <color name="watchlist">#FFD700</color>
 
     <color name="checkedChipBackgroundColor">#206200EA</color>
     <color name="chipBackgroundColor">@color/lightGray</color>

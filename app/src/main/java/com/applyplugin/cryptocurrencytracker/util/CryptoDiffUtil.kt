@@ -3,9 +3,9 @@ package com.applyplugin.cryptocurrencytracker.util
 import androidx.recyclerview.widget.DiffUtil
 import com.applyplugin.cryptocurrencytracker.model.CryptoResponse
 
-class CryptoDiffUtil(
-    private val oldList: List<CryptoResponse>,
-    private val newList: List<CryptoResponse>
+class CryptoDiffUtil<T>(
+    private val oldList: List<T>,
+    private val newList: List<T>
 ) : DiffUtil.Callback() {
     override fun getOldListSize(): Int {
         return oldList.size

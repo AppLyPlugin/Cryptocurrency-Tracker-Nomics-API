@@ -46,7 +46,6 @@ class CryptoAdapter : RecyclerView.Adapter<CryptoAdapter.MyViewHolder>() {
         val cryptoDiffUtil = CryptoDiffUtil(crypto, newData)
         val diffUtilResult = DiffUtil.calculateDiff(cryptoDiffUtil)
         crypto = newData
-        //notifyDataSetChanged()
         diffUtilResult.dispatchUpdatesTo(this)
     }
 

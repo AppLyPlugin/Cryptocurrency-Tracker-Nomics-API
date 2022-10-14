@@ -1,18 +1,19 @@
 <resources>
     <string name="app_name">Cryptocurrency Tracker</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="crypto_frag_holder">Cryptocurrency Fragment</string>
-    <string name="watch_frag_holder">Watcher Fragment</string>
+    <string name="watch_frag_holder">Watchlist Fragment</string>
     <string name="crpto_frag">Cryptocurrency</string>
-    <string name="watch_frag">Watcher</string>
+    <string name="watch_frag">Watchlist</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="filter_all">All</string>
     <string name="filter_active">Active</string>
     <string name="filter_inactive">Inactive</string>
     <string name="filter_dead">Dead</string>
     <string name="filter_new">New</string>
     <string name="notApplicable">N/A</string>
+
+    <string name="add_to_watchlist">Add to Watchlist</string>
 
 </resources>

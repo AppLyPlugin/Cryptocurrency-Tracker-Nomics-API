@@ -36,12 +36,12 @@ class CryptoDetailsFragment : Fragment() {
             args!!.getParcelable<CryptoResponse>(Constants.CRYPTO_DETAIL) as CryptoResponse
 
         binding.cryptoRank.text = "RANK#" + bundle.rank
-        binding.cryptoStatus.text = bundle.status.toUpperCase()
+        binding.cryptoStatus.text = bundle.status.uppercase()
         binding.cryptoName.text = bundle.name
         binding.cryptoPrice.text = bundle.price
         binding.timeStamp.text = adapter.formatTime(bundle.priceTimestamp) + "\n" +
                             adapter.formatDate(bundle.priceTimestamp)
-        binding.cryptoSymbol.text = bundle.symbol.toUpperCase()
+        binding.cryptoSymbol.text = bundle.symbol.uppercase()
 
         binding.valueHigh.text = bundle.high?.let { adapter.formatRound2Decimals(it) }
         binding.valueHighTmStmp.text = bundle.highTimestamp?.let { adapter.formatDate(it) }

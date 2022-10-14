@@ -8,6 +8,7 @@ import androidx.lifecycle.*
 import com.applyplugin.cryptocurrencytracker.model.CryptoResponse
 import com.applyplugin.cryptocurrencytracker.repository.Repository
 import com.applyplugin.cryptocurrencytracker.repository.database.entity.CryptoEntity
+import com.applyplugin.cryptocurrencytracker.repository.database.entity.WatchlistEntity
 import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.REFRESH_CRYPTO
 import com.applyplugin.cryptocurrencytracker.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -25,12 +26,33 @@ class MainViewModel @Inject constructor(
     /************ ROOM DATABASE ************/
 
     val readCryptos: LiveData<List<CryptoEntity>> =
-        repository.localSource.readDatabase().asLiveData()
+        repository.localSource.readCryptos().asLiveData()
+
+    val readWatchlist: LiveData<List<WatchlistEntity>> =
+        repository.localSource.readCryptoWatchlist().asLiveData()
 
     private fun insertCryptos(cryptoEntity: CryptoEntity) =
         viewModelScope.launch(Dispatchers.IO) {
             repository.localSource.insertCryptos(cryptoEntity)
         }
+
+    fun addCryptoToWatchlist(watchlistEntity: WatchlistEntity){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.localSource.insertCryptoToWatchlist(watchlistEntity)
+        }
+    }
+
+    fun deleteCryptoFromWatchlist(watchlistEntity: WatchlistEntity){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.localSource.deleteCryptoFromWatchlist(watchlistEntity)
+        }
+    }
+
+    fun deleteAllFromWatchlist(){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.localSource.deleteWatchlist()
+        }
+    }
 
     /************ RETROFIT ************/
 

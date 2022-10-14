@@ -7,9 +7,8 @@ import com.applyplugin.cryptocurrencytracker.util.Constants.Companion.WATCHLIST_
 
 @Entity(tableName = WATCHLIST_TABLE)
 class WatchlistEntity (
-    @PrimaryKey(autoGenerate = true)
-    var id: Int,
-    var crypto: List<CryptoResponse>
+    var crypto: CryptoResponse
 ){
-
+    @PrimaryKey(autoGenerate = false)
+    var id: String = crypto.id
 }

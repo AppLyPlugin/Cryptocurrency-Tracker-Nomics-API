@@ -1,20 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/cryptoRowLayout"
-    onCryptoClickListener="@{crypto}"
-    android:layout_width="match_parent"
-    android:layout_height="110dp"
-    android:layout_marginTop="4dp">
+        android:id="@+id/cryptoRowLayout"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginTop="4dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cryptoCardView"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        app:cardCornerRadius="12dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/watchlist_cryptoCardView"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            app:cardCornerRadius="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -29,123 +27,123 @@
                 android:background="@color/white">
 
                 <ImageView
-                    android:id="@+id/cryptoLogo"
+                    android:id="@+id/watchlist_cryptoLogo"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:scaleType="centerCrop"
-                    app:name="@{crypto.name}"
-                    app:symbol="@{crypto.symbol}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:name="@{watchlistEntity.crypto.name}"
+                    app:symbol="@{watchlistEntity.crypto.symbol}"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
-                    android:id="@+id/cryptoName"
+                    android:id="@+id/watchlist_cryptoName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="14dp"
                     android:maxLines="1"
-                    android:text="@{crypto.name}"
+                    android:text="@{watchlistEntity.crypto.name}"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     app:fontFamily="@font/im_fell_great_primer_sc"
-                    app:layout_constraintStart_toEndOf="@+id/cryptoLogo"
+                    app:layout_constraintStart_toEndOf="@+id/watchlist_cryptoLogo"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/cryptoRank"
+                    android:id="@+id/watchlist_cryptoRank"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:layout_marginEnd="25dp"
                     android:maxLines="1"
-                    android:text="@{crypto.rank}"
+                    android:text="@{watchlistEntity.crypto.rank}"
                     android:textColor="@color/black"
                     android:textSize="30sp"
                     app:fontFamily="@font/alfa_slab_one"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toEndOf="@+id/cryptoName"
+                    app:layout_constraintStart_toEndOf="@+id/watchlist_cryptoName"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.3" />
 
                 <TextView
-                    android:id="@+id/cryptoSymbol"
+                    android:id="@+id/watchlist_cryptoSymbol"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="12dp"
-                    android:text="@{crypto.symbol}"
+                    android:text="@{watchlistEntity.crypto.symbol}"
                     android:textSize="8sp"
                     app:fontFamily="@font/im_fell_great_primer_sc"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/cryptoLogo"
-                    app:layout_constraintTop_toBottomOf="@+id/cryptoName" />
+                    app:layout_constraintStart_toEndOf="@+id/watchlist_cryptoLogo"
+                    app:layout_constraintTop_toBottomOf="@+id/watchlist_cryptoName" />
 
                 <TextView
-                    android:id="@+id/cryptoPrice"
+                    android:id="@+id/watchlist_cryptoPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="4dp"
-                    setShortenedValue="@{crypto.price}"
-                    setTextColor="@{crypto.day1.priceChangePct}"
+                    setShortenedValue="@{watchlistEntity.crypto.price}"
+                    setTextColor="@{watchlistEntity.crypto.day1.priceChangePct}"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     app:fontFamily="@font/im_fell_great_primer_sc"
-                    app:layout_constraintStart_toEndOf="@+id/cryptoLogo"
-                    app:layout_constraintTop_toBottomOf="@+id/cryptoSymbol" />
+                    app:layout_constraintStart_toEndOf="@+id/watchlist_cryptoLogo"
+                    app:layout_constraintTop_toBottomOf="@+id/watchlist_cryptoSymbol" />
 
                 <TextView
-                    android:id="@+id/cryptoPriceChangePct"
+                    android:id="@+id/watchlist_cryptoPriceChangePct"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="4dp"
-                    setValuetoPercentage="@{crypto.day1.priceChangePct}"
-                    setTextColor="@{crypto.day1.priceChangePct}"
+                    setValuetoPercentage="@{watchlistEntity.crypto.day1.priceChangePct}"
+                    setTextColor="@{watchlistEntity.crypto.day1.priceChangePct}"
                     android:textSize="10sp"
                     app:fontFamily="@font/andika_new_basic"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/cryptoPrice"
-                    app:layout_constraintTop_toBottomOf="@+id/cryptoSymbol" />
+                    app:layout_constraintStart_toEndOf="@+id/watchlist_cryptoPrice"
+                    app:layout_constraintTop_toBottomOf="@+id/watchlist_cryptoSymbol" />
 
                 <TextView
-                    android:id="@+id/cryptoPriceChange"
+                    android:id="@+id/watchlist_cryptoPriceChange"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="2dp"
-                    setShortenedValue="@{crypto.day1.priceChange}"
-                    setTextColor="@{crypto.day1.priceChange}"
+                    setShortenedValue="@{watchlistEntity.crypto.day1.priceChange}"
+                    setTextColor="@{watchlistEntity.crypto.day1.priceChange}"
                     android:textSize="8sp"
                     app:fontFamily="@font/andika_new_basic"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/cryptoPrice"
-                    app:layout_constraintTop_toBottomOf="@+id/cryptoPriceChangePct" />
+                    app:layout_constraintStart_toEndOf="@+id/watchlist_cryptoPrice"
+                    app:layout_constraintTop_toBottomOf="@+id/watchlist_cryptoPriceChangePct" />
 
                 <TextView
-                    android:id="@+id/crytoAsOf"
+                    android:id="@+id/watchlist_crytoAsOf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="12dp"
-                    formatDateAndTime="@{crypto.priceTimestamp}"
+                    formatDateAndTime="@{watchlistEntity.crypto.priceTimestamp}"
                     android:textSize="12sp"
                     app:fontFamily="@font/im_fell_dw_pica_sc"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/cryptoLogo"
-                    app:layout_constraintTop_toBottomOf="@+id/cryptoPrice" />
+                    app:layout_constraintStart_toEndOf="@+id/watchlist_cryptoLogo"
+                    app:layout_constraintTop_toBottomOf="@+id/watchlist_cryptoPrice" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -156,7 +154,8 @@
     <data>
 
         <variable
-            name="crypto"
-            type="com.applyplugin.cryptocurrencytracker.model.CryptoResponse" />
+            name="watchlistEntity"
+            type="com.applyplugin.cryptocurrencytracker.repository.database.entity.WatchlistEntity" />
     </data>
+
 </layout>
