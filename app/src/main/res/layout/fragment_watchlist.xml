@@ -8,50 +8,44 @@
         android:layout_height="match_parent"
         tools:context=".ui.WatchlistFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".ui.CryptoFragment">
+        <ImageView
+            android:id="@+id/error_img"
+            setVisibility="@{mainViewModel.readWatchlist}"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:alpha="0.5"
+            android:src="@drawable/ic_no_watchlist_data"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/error_img"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:alpha="0.5"
-                android:src="@drawable/ic_no_watchlist_data"
-                setVisibility="@{mainViewModel.readWatchlist}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/error_txt"
+            setVisibility="@{mainViewModel.readWatchlist}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.5"
+            android:text="No Watchlist Data"
+            android:textSize="20dp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="@+id/error_img"
+            app:layout_constraintStart_toStartOf="@+id/error_img"
+            app:layout_constraintTop_toBottomOf="@+id/error_img" />
 
-            <TextView
-                android:id="@+id/error_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:alpha="0.5"
-                android:text="No Watchlist Data"
-                android:textSize="20dp"
-                android:textStyle="italic"
-                setVisibility="@{mainViewModel.readWatchlist}"
-                app:layout_constraintEnd_toEndOf="@+id/error_img"
-                app:layout_constraintStart_toStartOf="@+id/error_img"
-                app:layout_constraintTop_toBottomOf="@+id/error_img" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            setData="@{mAdapter}"
+            setVisibility="@{mainViewModel.readWatchlist}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview"
-                setData="@{mAdapter}"
-                setVisibility="@{mainViewModel.readWatchlist}"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

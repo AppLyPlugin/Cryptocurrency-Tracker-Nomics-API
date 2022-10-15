@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.cryptoFragment,
-                R.id.watchFragment
+                R.id.watchlistFragment
             )
         )
 

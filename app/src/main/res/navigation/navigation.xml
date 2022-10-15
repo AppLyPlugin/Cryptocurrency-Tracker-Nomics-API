@@ -22,10 +22,14 @@
             app:destination="@id/cryptoDetails" />
     </fragment>
     <fragment
-        android:id="@+id/watchFragment"
+        android:id="@+id/watchlistFragment"
         android:name="com.applyplugin.cryptocurrencytracker.ui.WatchlistFragment"
         android:label="@string/watch_frag"
-        tools:layout="@layout/fragment_watchlist" />
+        tools:layout="@layout/fragment_watchlist" >
+        <action
+            android:id="@+id/action_watchlistFragment_to_cryptoDetails"
+            app:destination="@id/cryptoDetails" />
+    </fragment>
     <dialog
         android:id="@+id/cryptoFilterDialogFragment"
         android:name="com.applyplugin.cryptocurrencytracker.ui.CryptoFilerDialogFragment"

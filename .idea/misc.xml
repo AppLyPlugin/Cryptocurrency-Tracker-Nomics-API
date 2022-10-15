@@ -32,10 +32,12 @@
         <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/layout/fragment_favorites.xml" value="0.1609375" />
         <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/layout/fragment_watchlist.xml" value="0.20625" />
         <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/layout/watcher_favorites.xml" value="0.14492753623188406" />
+        <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/layout/watchlist_contextual_menu.xml" value="0.17864583333333334" />
         <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/layout/watchlist_row_layout.xml" value="0.1" />
         <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/menu/bottom_nav_menu.xml" value="0.14375" />
         <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/menu/bottom_navigation.xml" value="0.1609375" />
         <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/menu/crypto_menu.xml" value="0.22604166666666667" />
+        <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/menu/watchlist_contextual_menu.xml" value="0.17864583333333334" />
         <entry key="..\:/AndroidStudio/Kotlin/CryptocurrencyTracker/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>

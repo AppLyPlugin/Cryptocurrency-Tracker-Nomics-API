@@ -5,7 +5,7 @@
         android:title="@string/crpto_frag"
         android:icon="@drawable/ic_bottom_nav_crypto"/>
 
-    <item android:id="@+id/watchFragment"
+    <item android:id="@+id/watchlistFragment"
         android:title="@string/watch_frag"
         android:icon="@drawable/ic_bottom_nav_watch"/>
 
