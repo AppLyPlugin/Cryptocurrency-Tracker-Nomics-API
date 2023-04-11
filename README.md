@@ -20,4 +20,5 @@ With Data and View Binding
 1. Add to Watchlist
 2. Improve UI
 
-//NOTE: NOMICS FREE API IS UNDER MAINTENANCE
+//NOTE: NOMICS FREE API IS CLOSED!
+Visit: https://nomics.com/
