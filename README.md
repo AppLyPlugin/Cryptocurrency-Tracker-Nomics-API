@@ -20,5 +20,5 @@ With Data and View Binding
 1. Add to Watchlist
 2. Improve UI
 
-//NOTE: NOMICS FREE API IS CLOSED!
+//NOTE: NOMICS FREE API IS CLOSED on Mar 31, 2023
 Visit: https://nomics.com/
