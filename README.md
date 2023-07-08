@@ -14,11 +14,5 @@ With Coroutine and Flow
 
 With Data and View Binding
 
-
-//TODO:
-
-1. Add to Watchlist
-2. Improve UI
-
 //NOTE: NOMICS FREE API IS CLOSED on Mar 31, 2023
 Visit: https://nomics.com/
